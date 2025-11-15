@@ -55,9 +55,7 @@ Rails](http://guides.rubyonrails.org/security.html#cross-site-request-forgery-cs
 and others.
 
 Use [OWASP CSRF Guard](/www-project-csrfguard/) to
-add CSRF protection to your Java applications. You can use
-[CSRFProtector Project](/www-project-csrfprotector/) to protect
-your PHP applications or any project deployed using Apache Server.
+add CSRF protection to your Java applications.
 
 John Melton also has an [excellent blog
 post](http://www.jtmelton.com/2010/05/16/the-owasp-top-ten-and-esapi-part-6-cross-site-request-forgery-csrf/)
@@ -189,7 +187,7 @@ If the application was designed to primarily use GET requests to
 transfer parameters and execute actions, the money transfer operation
 might be reduced to a request like:
 
-`GET http://bank.com/transfer.do?acct=BOB&amount=100 HTTP/1.1`
+`GET http://bank.com/transfer.do?acct=BOB&amount=100 HTTP/1.1`
 
 Maria now decides to exploit this web application vulnerability using
 Alice as the victim. Maria first constructs the following exploit URL
@@ -210,11 +208,11 @@ techniques:
 The exploit URL can be disguised as an ordinary link, encouraging the
 victim to click it:
 
-`<a href="http://bank.com/transfer.do?acct=MARIA&amount=100000">View my Pictures!</a>`
+`<a href="http://bank.com/transfer.do?acct=MARIA&amount=100000">View my Pictures!</a>`
 
 Or as a 0x0 fake image:
 
-`<img src="http://bank.com/transfer.do?acct=MARIA&amount=100000" width="0" height="0" border="0">`
+`<img src="http://bank.com/transfer.do?acct=MARIA&amount=100000" width="0" height="0" border="0">`
 
 If this image tag were included in the email, Alice wouldn't see
 anything. However, the browser *will still* submit the request to
@@ -233,7 +231,7 @@ being executed by the victim. Let's assume the bank now uses POST and
 the vulnerable request looks like this:
 
 ```
-POST http://bank.com/transfer.do HTTP/1.1
+POST http://bank.com/transfer.do HTTP/1.1
 
 acct=BOB&amount=100
 ```
@@ -267,9 +265,9 @@ PUT or DELETE. Let's assume the vulnerable bank uses PUT that takes a
 JSON block as an argument:
 
 ```
-PUT http://bank.com/transfer.do HTTP/1.1
+PUT http://bank.com/transfer.do HTTP/1.1
 
-{ "acct":"BOB", "amount":100 }
+{ "acct":"BOB", "amount":100 }
 ```
 
 Such requests can be executed with JavaScript embedded into an exploit
@@ -277,11 +275,11 @@ page:
 
 ```
 <script>
-function put() {
-    var x = new XMLHttpRequest();
-    x.open("PUT","http://bank.com/transfer.do",true);
-    x.setRequestHeader("Content-Type", "application/json");
-    x.send(JSON.stringify({"acct":"BOB", "amount":100})); 
+function put() {
+    var x = new XMLHttpRequest();
+    x.open("PUT","http://bank.com/transfer.do",true);
+    x.setRequestHeader("Content-Type", "application/json");
+    x.send(JSON.stringify({"acct":"BOB", "amount":100})); 
 }
 </script>
 
@@ -296,7 +294,7 @@ web site explicitly opens up cross-origin requests from the attacker's
 [CORS](https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html)
 with the following header:
 
-`Access-Control-Allow-Origin: *`
+`Access-Control-Allow-Origin: *`
 
 ## Related [Attacks](https://owasp.org/www-community/attacks/)
 

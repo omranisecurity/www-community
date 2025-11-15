@@ -42,14 +42,14 @@ attack, which is based on a manual and oriented identification of
 resources by modifying URL parameters. The user1 wants to check their
 on-line agenda through the following URL:
 
-` www.site-example.com/users/calendar.php/user1/20070715 `
+`www.site-example.com/users/calendar.php/user1/20070715`
 
 In the URL, it is possible to identify the username (`user1`) and
 the date (mm/dd/yyyy). If the user attempts to make a forced browsing
 attack, they could guess another user's agenda by predicting user
 identification and date, as follow:
 
-` www.site-example.com/users/calendar.php/user6/20070716 `
+`www.site-example.com/users/calendar.php/user6/20070716`
 
 The attack can be considered successful upon accessing other user's
 agenda. A bad implementation of the authorization mechanism contributed
@@ -60,15 +60,15 @@ to this attack's success.
 This example presents an attack of static directory and file enumeration
 using an automated tool.
 
-A scanning tool, like [Nikto](http://www.cirt.net/code/nikto.shtml), has
+A scanning tool, like [Nikto](https://cirt.net/Nikto2), has
 the ability to search for existing files and directories based on a
 database of well-know resources, such as:
 
-`/system/`
-`/password/`
-`/logs/`
-`/admin/`
-`/test/`
+* `/system/`
+* `/password/`
+* `/logs/`
+* `/admin/`
+* `/test/`
 
 When the tool receives an `HTTP 200` message it means that such
 resource was found and should be manually inspected for valuable
